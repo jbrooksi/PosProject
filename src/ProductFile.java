@@ -35,11 +35,18 @@ public class ProductFile {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
+		
 	}
 	
 	public void printMenu(){
 		for (Product p : productList) {
 			System.out.println(p);
-		}
+			}
+	
+	
+	}
+	
+	public Product getProduct(int n) {
+		return productList.get(n - 1);
 	}
 }
