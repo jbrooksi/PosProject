@@ -3,26 +3,6 @@ import java.util.Scanner;
 
 public class CashRegister2 {
 
-	private double purchase, payment, totalTax, taxRate, tax, salesTotal,
-					salesCount, amount, rate, taxPurchase, taxable;
-	
-//Cash register with no money in it
-	public CashRegister2(){
-		purchase = 0;
-		payment = 0;
-		taxRate = rate;
-	}
-	
-//Records the items that were bought
-	public void recordPurchase(double amount){
-		purchase = purchase + amount;
-		salesTotal = amount + salesTotal;
-}
-
-//Adds tax to the purchase 
-public void recordTaxablePurchase(double amount){
-	totalTax = totalTax + amount + (amount *(taxRate/100));
-}
 
 public static void main(String[] args) {
 	Scanner scan = new Scanner(System.in);
