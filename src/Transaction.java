@@ -7,7 +7,7 @@ public class Transaction {
 	private Product item;
 	private int quatity;
 	
-	//private ArrayList<Product> itemPurchased = new ArrayList<Product>();
+	private ArrayList<Product> itemPurchased = new ArrayList<Product>();
 	
 	public Transaction(Product item, int quatity) {
 		super();
@@ -25,6 +25,11 @@ public class Transaction {
 		subTotal = new BigDecimal(subTotal)
 				.setScale(2, RoundingMode.HALF_UP).doubleValue();
 		return subTotal;
+	}
+
+	public int getQuatity() {
+		return quatity;
 	} 
+	
 	
 }	

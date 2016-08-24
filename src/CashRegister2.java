@@ -9,7 +9,7 @@ public static void main(String[] args) {
 	ProductFile menu = new ProductFile("./StoreItems.txt");
 	Transaction tran;
 	ArrayList<Product> purchaseList = new ArrayList<Product>();
-	ArrayList<Double> quanitylist = new ArrayList<Double>();
+	ArrayList<Transaction> quanitylist = new ArrayList<Transaction>();
 	Product p;
 	int productNum;
 	String again;
@@ -33,7 +33,7 @@ public static void main(String[] args) {
 		System.out.println("How many would you like");
 		quanity = scan.nextInt();
 		tran = new Transaction(p, quanity);
-		quanitylist.add(tran.subTotal());
+		quanitylist.add(tran);
 		
 		
 		scan.nextLine();
@@ -44,7 +44,7 @@ public static void main(String[] args) {
 	
 		System.out.println("Items in your Shopping cart" + "\n");
 	for(int i = 0; i < purchaseList.size(); i++){
-		System.out.println (purchaseList.get(i) + " X "+ quanity+ " " + quanitylist.get(i) );
+		System.out.println (purchaseList.get(i) + " X "+ quanitylist.get(i).getQuatity() + " " + quanitylist.get(i).subTotal() );
 	}
 		//for(Product c: purchaseList){
 		//	System.out.println(c + " " + quanity + " " + quanitylist);
