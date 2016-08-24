@@ -44,10 +44,12 @@ public class CashRegister2 {
 			again = scan.nextLine();
 		} while (again.equalsIgnoreCase("yes"));
 
-		System.out.println("Items in your Shopping cart" + "\n");
+		
+		System.out.println("\nItems in your Shopping cart\n");
+		System.out.println(displayCart(purchaseList, quanitylist));
 		for (int i = 0; i < purchaseList.size(); i++) {
-			System.out.println(purchaseList.get(i) + " X " + quanitylist.get(i).getQuatity() + " "
-					+ "$" + quanitylist.get(i).subTotal());
+//			System.out.println(purchaseList.get(i) + " X " + quanitylist.get(i).getQuatity() + " "
+//					+ "$" + quanitylist.get(i).subTotal());
 			sum = new BigDecimal(sum + quanitylist.get(i).subTotal())
 					.setScale(2, RoundingMode.HALF_UP).doubleValue();
 
@@ -60,12 +62,12 @@ public class CashRegister2 {
 
 		payment = scan.nextLine();
 		payment = payment.toUpperCase();
-
+		double amount =sum;
 		switch (payment) {
 
 		case "A":
 			System.out.println("Enter the amount");
-			double amount = scan.nextDouble();
+			amount = scan.nextDouble();
 			change = new BigDecimal(amount - sum).setScale(2, RoundingMode.HALF_UP).doubleValue();
 			System.out.println("Your change is $" + " " + change);
 			break;
@@ -99,8 +101,29 @@ public class CashRegister2 {
 			
 		}
 		System.out.println("Thank you for Shopping with us heres your reciept");
-		System.out.println(" ");
+		System.out.println(displayCart(purchaseList, quanitylist));
+		System.out.println();
+		System.out.println("You paid " + amount);
+		
 
 	}
+
+	private static String displayCart(ArrayList<Product> purchaseList, ArrayList<Transaction> quanitylist) {
+		// TODO Auto-generated method stub
+		//double sum=0;
+//		BigDecimal grandTotal = new BigDecimal("0")
+//				.setScale(2, RoundingMode.HALF_UP);
+		StringBuilder output = new StringBuilder();
+		for (int i = 0; i < purchaseList.size(); i++) {
+			output.append(purchaseList.get(i) + " X " + quanitylist.get(i).getQuatity() + " "
+					+ "$" + quanitylist.get(i).subTotal()+ "\n");
+		//sum = sum + quanitylist.get(i).subTotal();
+		
+		}
+	
+		return output.toString();
+	}
+	
+	
 
 }
