@@ -68,6 +68,10 @@ public class CashRegister2 {
 		case "A":
 			System.out.println("Enter the amount");
 			amount = scan.nextDouble();
+			if(amount < sum){
+				System.out.println("Not enough money Give me more!!!");
+				amount = scan.nextDouble();
+			}
 			change = new BigDecimal(amount - sum).setScale(2, RoundingMode.HALF_UP).doubleValue();
 			System.out.println("Your change is $" + " " + change);
 			break;
