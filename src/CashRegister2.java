@@ -14,15 +14,15 @@ public class CashRegister2 {
 		Product p;
 		int productNum;
 		String again;
-		String totalList;
 		int quanity;
 		double sum = 0;
 		String payment;
-		double substotals;
 		double change;
 
 		System.out.println("Welcome to the: GET&GO");
-		System.out.println("Please enjoy and shop smart" + "\n");
+		System.out.println("Please enjoy and shop smart");
+		System.out.println("ID           Item Name            Category          Description           Price");
+		System.out.println("--     --------------------       --------     ---------------------     -------");
 
 		menu.printMenu();
 		System.out.println();
@@ -44,14 +44,14 @@ public class CashRegister2 {
 			again = scan.nextLine();
 		} while (again.equalsIgnoreCase("yes"));
 
-		
 		System.out.println("\nItems in your Shopping cart\n");
+		System.out.println(
+				"ID           Item Name            Category          Description           Price       Quntity    Subtotal");
+		System.out.println(
+				"--     --------------------       --------     ---------------------     -------      -------    --------");
 		System.out.println(displayCart(purchaseList, quanitylist));
 		for (int i = 0; i < purchaseList.size(); i++) {
-//			System.out.println(purchaseList.get(i) + " X " + quanitylist.get(i).getQuatity() + " "
-//					+ "$" + quanitylist.get(i).subTotal());
-			sum = new BigDecimal(sum + quanitylist.get(i).subTotal())
-					.setScale(2, RoundingMode.HALF_UP).doubleValue();
+			sum = new BigDecimal(sum + quanitylist.get(i).subTotal()).setScale(2, RoundingMode.HALF_UP).doubleValue();
 
 		}
 
@@ -62,7 +62,8 @@ public class CashRegister2 {
 
 		payment = scan.nextLine();
 		payment = payment.toUpperCase();
-		double amount =sum;
+		double amount = sum;
+		String change1 = "";
 		switch (payment) {
 
 		case "A":
@@ -73,7 +74,8 @@ public class CashRegister2 {
 				amount = scan.nextDouble();
 			}
 			change = new BigDecimal(amount - sum).setScale(2, RoundingMode.HALF_UP).doubleValue();
-			System.out.println("Your change is $" + " " + change);
+			change1 = "Your change is $" + " " + change;
+
 			break;
 		case "B":
 			Check check;
@@ -100,34 +102,32 @@ public class CashRegister2 {
 				cardisValid = card.isValid();
 				if (!cardisValid)
 					System.out.println("You enter invalid check.");
-				
-			} while(!cardisValid);
-			
+
+			} while (!cardisValid);
+
 		}
-		System.out.println("Thank you for Shopping with us heres your reciept");
+		System.out.println("Thank you for Shopping with us heres your reciept\n\n");
+		System.out.println(
+				"ID           Item Name            Category          Description           Price       Quntity    Subtotal");
+		System.out.println(
+				"--     --------------------       --------     ---------------------     -------      -------    --------");
 		System.out.println(displayCart(purchaseList, quanitylist));
 		System.out.println();
 		System.out.println("You paid " + amount);
-		
+		System.out.println(change1);
 
+		scan.close();
 	}
 
 	private static String displayCart(ArrayList<Product> purchaseList, ArrayList<Transaction> quanitylist) {
-		// TODO Auto-generated method stub
-		//double sum=0;
-//		BigDecimal grandTotal = new BigDecimal("0")
-//				.setScale(2, RoundingMode.HALF_UP);
 		StringBuilder output = new StringBuilder();
 		for (int i = 0; i < purchaseList.size(); i++) {
-			output.append(purchaseList.get(i) + " X " + quanitylist.get(i).getQuatity() + " "
-					+ "$" + quanitylist.get(i).subTotal()+ "\n");
-		//sum = sum + quanitylist.get(i).subTotal();
-		
+			output.append(purchaseList.get(i) + "         X " + quanitylist.get(i).getQuatity() + "       " + "$"
+					+ quanitylist.get(i).subTotal() + "\n");
+
 		}
-	
+
 		return output.toString();
 	}
-	
-	
 
 }
