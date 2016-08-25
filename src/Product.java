@@ -70,7 +70,8 @@ public class Product {
 	}
 	
 	public String toString() {
-		return String.format("%2d\t%22S\t%8S\t%22S\t$%8.2f", id, name, category, description, price); 
+		
+		return String.format("%2d %20S         %10S     %21S     $%1.2f", id, name, category, description, price); 
 	}
 
 	

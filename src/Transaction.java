@@ -7,8 +7,7 @@ public class Transaction {
 	private Product item;
 	private int quatity;
 	
-	private ArrayList<Product> itemPurchased = new ArrayList<Product>();
-	
+		
 	public Transaction(Product item, int quatity) {
 		super();
 		this.item = item;
